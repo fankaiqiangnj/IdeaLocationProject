@@ -28,13 +28,16 @@ public class CoreService {
 //        if(true){
             return "入参错误";
         }
+        if (mCurrentLon.equals("0.0")||mCurrentLat.equals("0.0")){
+            return "入参错误";
+        }
         ResultSet rs = null;
         Statement stmt = null;
         Connection conn = null;
         try {
             Class.forName("oracle.jdbc.driver.OracleDriver");
 //            conn = DriverManager.getConnection("jdbc:oracle:thin:@10.134.161.68:1521:orcl", "LSPWYW", "lspwyw123");
-            conn = DriverManager.getConnection("jdbc:oracle:thin:@10.134.161.68:1521:orcl", "LSPWYW", "lspwyw123");
+            conn = DriverManager.getConnection("jdbc:oracle:thin:@26.47.182.109:1521:orcl", "LSPWYW", "lspwyw123");
             stmt = conn.createStatement();
             stmt.execute("insert into t_qx_zb (sj,east,north,userid) values(to_date('" + timeStr + "','yyyy-mm-dd hh24:mi:ss'),'" + mCurrentLon + "',+'" + mCurrentLat +"',+'"+userId+ "')");
 
